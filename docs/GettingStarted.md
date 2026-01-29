@@ -37,12 +37,12 @@ ESERAMair に電源が入り、LEDが素早い点滅になると思います。
 
 teratermを開き、COMポートを選択します。
 
-<img width="400" src="image/teraterm-connect.png">
+<img width="500" src="image/teraterm-connect.png">
 
 開けたら数回Enterキーを謳歌してみてください。
 プロンプトが表示されれば接続OKです。
 
-<img width="400" src="image/teraterm-prompt.png">
+<img width="500" src="image/teraterm-prompt.png">
 
 ### 3. setwifi コマンドでSSIDとパスワードを設定します
 
@@ -63,6 +63,8 @@ SSID、パスワードは日本語はダメです。半角英数記号で入力�
 
 チカッ・・チカッ・・となったら AP に接続完了して IPアドレスが取れたことを意味します。
 
+<img width="300" src="image/led-slow-blink.gif">
+
 > [!Warning]
 > 5GHz の AP には接続できません。最近の WiFi ルータは 5GHz 用と 2.4GHz 用の2つのSSIDが有ることが多いので、2.4GHzのSSIDを設定するようにしてください。
 
@@ -72,7 +74,7 @@ WiFiに接続した状態で USB コンソールで Enter を押すと、プロ�
 > [!NOTE]
 > IPアドレスを知る基本的な手段はこの方法しかありません。IPが分からないときはUSBを繋げてEnterを!!
 
-<img width=400 src="image/teraterm-setwifi.png">
+<img width="500" src="image/teraterm-setwifi.png">
 
 デフォルトでDHCPでIPアドレスを取得しますが、固定IPでの設定も可能です。 (TODO:リンク)
 
@@ -80,7 +82,7 @@ WiFiに接続した状態で USB コンソールで Enter を押すと、プロ�
 
 ※ここからは USB 経由での電源供給だけでなく、MSXに装着して電源を入れることでも同様の操作が可能です。
 
-### 0. DIPSW を確認
+### 1. DIPSW を確認
 
 4 bit 分ある DIPSW を全て OFF (前面側に倒す) にしてください。
 Nextor を使うには、MegaROMモードで8kバンク設定である必要があります。
@@ -90,11 +92,11 @@ Nextor を使うには、MegaROMモードで8kバンク設定である必要が�
 3. フラットROM ON/OFF → OFF
 4. WriteProtect OFF/ON → OFF
 
-### 1. ROMイメージをダウンロードする
+### 2. ROMイメージをダウンロードする
 
 [こちら](TODO)からNextorROMイメージをダウンロードしてください。
 
-### 2. ブラウザからESERAMairにアクセスする
+### 3. ブラウザからESERAMairにアクセスする
 
 お使いのブラウザで、`http://IPアドレス/` を開いてください。
 
@@ -103,7 +105,7 @@ Nextor を使うには、MegaROMモードで8kバンク設定である必要が�
 
 <img width="600" src="image/page.png">
 
-### 3. NextorROMを書き込む
+### 4. NextorROMを書き込む
 
 <a href="../nextor/">TODO: リンク先変更</a>から eseram.rom をダウンロードします。
 
@@ -116,7 +118,7 @@ Nextor を使うには、MegaROMモードで8kバンク設定である必要が�
 >
 > <img width="400" src="image/upload-rom-2.png">
 
-### 4. Formatする
+### 5. Formatする
 
 eseram.romを書き込むと、「FAT Image Operation」側が有効になります。
 

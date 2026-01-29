@@ -35,6 +35,7 @@ $ curl http://192.168.1.100:8080/hello
 - 1MBのSRAMの内容をバイナリで取得します。
 - Parameters:
   - start: 開始アドレス（省略時0）
+  - size: サイズ (省略時は末尾まで)
   - filename: 省略可
 - Response:
   - 200 OK
@@ -78,9 +79,9 @@ $ curl http://192.168.1.100:8080/hello
       {
         "driver": true,
         "mountable": true,
-        "total_size": 16777216,
-        "free_size": 10485760,
-        "fat_type": "FAT12|FAT16|FAT32"
+        "total_size": 917504,
+        "free_size": 10240,
+        "fat_type": "FAT12"
       }
       ```
     - マウント可能（容量取得失敗）: `{"driver":true, "mountable":true, "reason":"getfree_failed"}`
