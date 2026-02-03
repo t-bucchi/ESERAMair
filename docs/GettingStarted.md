@@ -72,11 +72,11 @@ WiFiに接続した状態で USB コンソールで Enter を押すと、プロ�
 ブラウザからアクセスするためにこの IPアドレスを使用します。
 
 > [!NOTE]
-> IPアドレスを知る基本的な手段はこの方法しかありません。IPが分からないときはUSBを繋げてEnterを!!
+> 確実にIPアドレスを知ることができる方法はこの方法しかありません。IPが分からないときはUSBを繋げてEnterを!!
 
 <img width="500" src="image/teraterm-setwifi.png">
 
-デフォルトでDHCPでIPアドレスを取得しますが、固定IPでの設定も可能です。 (TODO:リンク)
+デフォルトでDHCPでIPアドレスを取得しますが、固定IPでの設定も可能です。 ([USBCLI.mdのipコマンド](USBCLI.md#ip)を参照)
 
 ## Nextor ROMイメージの書き込み
 
@@ -84,7 +84,7 @@ WiFiに接続した状態で USB コンソールで Enter を押すと、プロ�
 
 ### 1. DIPSW を確認
 
-4 bit 分ある DIPSW を全て OFF (前面側に倒す) にしてください。
+4 bit 分ある DIPSW を全て OFF (前面側に倒す) にしてください。<br />
 Nextor を使うには、MegaROMモードで8kバンク設定である必要があります。
 
 1. Enable/Disable → Enable
@@ -94,33 +94,31 @@ Nextor を使うには、MegaROMモードで8kバンク設定である必要が�
 
 ### 2. ROMイメージをダウンロードする
 
-[こちら](TODO)からNextorROMイメージをダウンロードしてください。
+<a href="../../../releases">Releases</a>から `nextor-eseramair-{VER}.rom` (以下、`nextor-eseramair.rom`)をダウンロードします。
 
 ### 3. ブラウザからESERAMairにアクセスする
 
 お使いのブラウザで、`http://IPアドレス/` を開いてください。
 
-以下のような画面が表示されればOKです。
+以下のような画面が表示されればOKです。<br />
 表示されない場合はWiFiにつながっているか(LEDがチカッ・・チカッ・・という点滅になっているか)、IPアドレスが合っているかを確認してください。
 
 <img width="600" src="image/page.png">
 
 ### 4. NextorROMを書き込む
 
-<a href="../nextor/">TODO: リンク先変更</a>から eseram.rom をダウンロードします。
-
-ブラウザの「ROM Image Operation」の「Upload」を押下するとダイアログが開きます。eseram.rom を選択して「Upload」を押すと eseram.rom が ESERAMair にアップロードされます。
+ブラウザの「ROM Image Operation」の「Upload」を押下するとダイアログが開きます。`nextor-eseramair.rom` を選択して「Upload」を押すと `nextor-eseramair.rom` が ESERAMair にアップロードされます。
 
 <img width="500" src="image/upload-rom.png">
 
 > [!NOTE]
-> ページの赤枠に eseram.rom をドラッグアンドドロップすることでもアップロードすることができます。
+> ページの赤枠に `nextor-eseramair.rom` をドラッグアンドドロップすることでもアップロードすることができます。
 >
-> <img width="400" src="image/upload-rom-2.png">
+> <img width="300" src="image/upload-rom-2.png">
 
 ### 5. Formatする
 
-eseram.romを書き込むと、「FAT Image Operation」側が有効になります。
+`nextor-eseramair.rom`を書き込むと、「FAT Image Operation」側が有効になります。
 
 初期状態ではファイルシステムが書き込まれていないため Format を押してフォーマットします。
 
@@ -132,7 +130,8 @@ eseram.romを書き込むと、「FAT Image Operation」側が有効になりま
 
 <img width="600" src="image/ready.png">
 
-> [!NOTE] ディスクの容量は 896kB です。
+> [!NOTE]
+> ディスクの容量は 896kB です。
 > 2DD のフロッピーディスクよりも少し大きい容量となります。
 >
 > 1024kBのうち、Nextor kernel と ESERAMair ドライバで 128kB を消費します。
@@ -142,13 +141,15 @@ eseram.romを書き込むと、「FAT Image Operation」側が有効になりま
 
 画面下部の「Upload File」からファイル単体のアップロードをすることができます。
 
-> [!NOTE] この領域にドラッグアンドドロップすることでもアップロードすることができます。
+> [!NOTE]
+> この領域にドラッグアンドドロップすることでもアップロードすることができます。
 
 <img width="600" src="image/upload-file.png">
 
 MSX のファイル名は 8.3 形式である必要があるため、MSX側のファイル名を「File name:」に入力した上で「Upload」ボタンを押すことでアップロードすることができます。
 
-> [!Warning] 現時点では英数字のみに対応しており、カタカナ、ひらがなは未対応です。
+> [!Warning]
+> 現時点では英数字のみに対応しており、カタカナ、ひらがなは未対応です。
 
 アップロードが完了すると以下のようにファイル一覧に追加されます。
 
@@ -156,11 +157,12 @@ MSX のファイル名は 8.3 形式である必要があるため、MSX側の�
 
 ## MSX側からファイルの確認
 
-ESERARMair から USB を抜き、MSX にカートリッジを挿して MSX の電源を入れます。
+ESERARMair から USB を抜き、MSX にカートリッジを挿して MSX の電源を入れます。<br />
 NextorのRAMDISK機能を使うためにはメインメモリ 64kB 以上の MSX が必要です。
 64kB 以上であれば MSX1/2/2+/TurboR いずれも使用可能です。
 
-> [!NOTE] USBで電源を供給しながらMSXの電源を入れても大丈夫です
+> [!NOTE]
+> USBで電源を供給しながらMSXの電源を入れても大丈夫です
 
 電源を入れると Disk BASIC が起動するので `FILES` を実行してみてください。
 上の手順でアップロードしたファイルが見えれば OK です。
@@ -197,7 +199,8 @@ Nextor kernel 等も込みで、1MB の SRAM 内容全てをダウンロード(�
 
 「ROM Image Operation」の「Upload」からメガロムイメージをアップロードすることができます。
 
-> [!Warning] 似非RAMディスクの内容は破壊されますのでご注意ください。
+> [!Warning]
+> 似非RAMディスクの内容は破壊されますのでご注意ください。
 
 起動させる際には 8k/16k のバンクサイズスイッチを適切に切り替えてください。一致していないと起動しませんのでご注意ください。
 
@@ -250,10 +253,10 @@ FDDから起動してSRAMにイメージを書き込みたいときなどに使�
 
 ## バンクサイズ切り替え
 
-メガロムコントローラのバンクサイズを8k/16kから選択します。
+メガロムコントローラのバンクサイズを8k/16kから選択します。<br />
 ※ROMエミュレータがOFFのときだけ有効です。
 
-Nextorを使う場合は8kにする必要があります。
+Nextorを使う場合は8kにする必要があります。<br />
 Nextor本体は16kもサポートしますが、ESERAMair用Driverが8k専用になっています。
 
 - OFF(手前側)
@@ -264,7 +267,8 @@ Nextor本体は16kもサポートしますが、ESERAMair用Driverが8k専用に
 ## ROMエミュレータON/OFF
 
 メガロムではなく、フラットなROMのエミュレーションをします。
-SRAMの先頭64kBを、そのまま page0〜3 にマッピングします。
+
+SRAMの先頭64kBを、そのまま page0〜3 にマッピングします。<br />
 例えば、page1 を使った 0x4000〜0x7FFF の16KBのゲームは、SRAMの先頭ではなくオフセット0x4000に書き込みます。
 
 ROMなので、MSXからは書き換えられません。
@@ -277,6 +281,7 @@ ROMなので、MSXからは書き換えられません。
 ## Write Protect
 
 SRAMへの書き込みを禁止するスイッチです。
+
 あまり使うことはないと思いますが、電源OFFやリセット時にどうしてもSRAMデータが壊れてしまうような機種の場合、電源を切る前にプロテクトをONにすると、データ破壊を防げる可能性があります。
 
 また、どうしても電源を入れたままカートリッジを抜かなければならない(そんなケースある？)場合でも、データ破壊を防げる可能性があります。
@@ -285,3 +290,33 @@ SRAMへの書き込みを禁止するスイッチです。
   - 書き込み許可
 - ON(奥側)
   - 書き込み禁止
+
+# 起動画面
+
+nextor-eseramair.rom の起動時に以下のような画面が表示されます。
+ここでも IP アドレスを確認することができます。
+
+> [!NOTE]
+> ゲームのROMが書いてあるなど、nextor-eseramair.rom が書かれていない時は表示されません。
+> その場合は[USBを接続して](#3-setwifi-%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%81%A7ssid%E3%81%A8%E3%83%91%E3%82%B9%E3%83%AF%E3%83%BC%E3%83%89%E3%82%92%E8%A8%AD%E5%AE%9A%E3%81%97%E3%81%BE%E3%81%99)IPアドレスをご確認ください。
+
+<img width="500" src="image/bootinfo.png">
+
+以下の内容が表示されます。
+
+- Driver:
+   - nextor-eseramair.rom のバージョン
+- Pico:
+   - Raspberry Pi Pico 2W に書き込まれたファームウェアのバージョン
+- CPLD:
+   - CPLDのバージョン
+- IP:
+   - 取得したIPアドレス (WiFi接続成功時)
+- WebUI:
+   - ブラウザでアクセスする URL
+- NTP:
+   - NTPで取得した現在の日時
+
+MSX2以上の機種では、Tを押しながら電源を入れると、NTPで取得した時刻をRTCに設定することができます。
+
+<img width="500" src="image/bootinfo-ntp.png">
