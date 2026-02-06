@@ -65,6 +65,23 @@ $ curl http://192.168.1.100:8080/hello
 
 
 
+### POST /ram/fill
+- SRAMを特定のデータで埋め尽くします。
+- Parameters:
+  - start: 書き込み開始アドレス(省略したら0)
+  - size: 書き込み開始アドレス(省略したら末尾まで)
+  - data: 書き込む値(省略したら0)
+- Request:
+- Response:
+  - 200 OK
+  - Content-Type: application/json
+  - Body: `{}`
+- Error:
+  - 400 Bad Request: start + size がSRAM範囲外
+  - 500 Internal Server Error: バス制御取得失敗
+
+
+
 ## GET /fat/status
 - FATドライバおよびマウント状態を返します（状態照会エンドポイント）。
 - ポリシー: 状態判定が可能な限りは常に 200 を返し、詳細は Body で表現します。
@@ -139,13 +156,14 @@ $ curl http://192.168.1.100:8080/hello
 ## POST /fat/files/&lt;filename&gt;
 - 指定ファイルにアップロードします。`<filename>` にはサブディレクトリを含めることができます。親ディレクトリは事前に存在している必要があります。
 - Request:
-  - Body: data to write
+  - Query (optional):
+    - `mtime`: タイムスタンプ（ローカル時刻）。`YYYY/MM/DD HH:MM:SS` または `YYYY-MM-DDTHH:MM:SS`  - Body: data to write
 - Response:
   - 200 OK
   - Content-Type: application/json
   - Body: `{}`
 - Error:
-  - 400 Bad Request: パスが不正、またはディレクトリを指定した場合
+  - 400 Bad Request: パスが不正、またはディレクトリを指定した場合、`mtime` が不正
   - 404 Not Found: 親ディレクトリが存在しない
 
 

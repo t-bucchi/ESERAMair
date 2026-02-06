@@ -320,3 +320,36 @@ nextor-eseramair.rom の起動時に以下のような画面が表示されま�
 MSX2以上の機種では、Tを押しながら電源を入れると、NTPで取得した時刻をRTCに設定することができます。
 
 <img width="500" src="image/bootinfo-ntp.png">
+
+# Update Firmware
+
+Raspiberry Pi Picoのファームウェア更新手順を記載します。
+
+## 1. Pico FW イメージをダウンロードする
+
+<a href="../../../releases">Releases</a>から `eseramair-pico-{VER}.uf2` (以下、`eseramair-pico.uf2`)をダウンロードします。
+
+## 2. カットリッジを開ける
+
+裏側のネジを外し基板を取り出します。
+
+> [!Warning]
+> 前面と裏面のシェルはラベルで繋がっており分離しません。ラベルを切らないようにご注意ください。
+
+<img width="600" src="image/battery.jpg">
+
+## 3. BOOTSELボタンを押しながら micro USB でPCと接続する
+
+Pico上にある BOOTSEL と書かれたスイッチを押しながら micro USB で PC と接続してください。
+
+<img width="600" src="image/usb-bootsel.jpg">
+
+LEDは消灯したままになり、PCにUSBドライブが認識されると思います。
+
+## 4. USBドライブに eseramair-pico.uf2 をコピーする
+
+認識したUSBドライブを開いて、1 でダウンロードした `eseramair-pico.uf2` をコピーしてください。
+
+コピーが完了するとともにドライブが消え、LEDが点滅し始めるはずです。
+
+以上でファームウェアのアップデートの完了です。
