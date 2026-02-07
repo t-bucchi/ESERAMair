@@ -106,9 +106,18 @@ MainRAM容量に関係なく、全てのMSXで実行可能なテストです。
 
 ※この手順を実行するとESERAMairのSRAM内容は破壊されますのでご注意ください
 
-**手順 1.** USBケーブルでESERAMairとPCを接続します。
+**手順 1.** ESERAMairのDIPSWを全てOFFにします。
 
-**手順 2.** Teraterm で ESERAMair のコンソールを開き、以下のコマンドを実行します。
+1. OFF: ENABLE
+1. OFF: 8k Bank
+1. OFF: Megarom Mode
+1. OFF: WriteProtect OFF
+
+<img width="400" src="../image/dipsw.jpg">
+
+**手順 2.** USBケーブルでESERAMairとPCを接続します。
+
+**手順 3.** Teraterm で ESERAMair のコンソールを開き、以下のコマンドを実行します。
 
 ```
 sram test fill
@@ -116,19 +125,19 @@ sram test check
 ```
 OK と出るはずです。出なかったらここ以降の手順は止めてご報告をお願いします。
 
-**手順 3.** USBケーブルを取り外します (※ポイント!!必ず外してください)
+**手順 4.** USBケーブルを取り外します (※ポイント!!必ず外してください)
 
-**手順 4.** ESERAMair を MSX に装着し電源を入れます
+**手順 5.** ESERAMair を MSX に装着し電源を入れます
 
-**手順 5.** MSX が起動したら、リセットスイッチでリセットします
+**手順 6.** MSX が起動したら、リセットスイッチでリセットします
 
-**手順 6.** 上記 手順.5 を 5 回以上繰り返します
+**手順 7.** 上記 手順.5 を 5 回以上繰り返します
 
-**手順 7.** MSX の電源を切り、ESERAMair を MSX から取り外します
+**手順 8.** MSX の電源を切り、ESERAMair を MSX から取り外します
 
-**手順 8.** USBケーブルでESERAMairとPCを接続します。
+**手順 9.** USBケーブルでESERAMairとPCを接続します。
 
-**手順 9.** Teraterm で ESERAMair のコンソールを開き、以下のコマンドを実行します。
+**手順 10.** Teraterm で ESERAMair のコンソールを開き、以下のコマンドを実行します。
 
 ```
 sram test check
@@ -144,9 +153,18 @@ MainRAM容量に関係なく、全てのMSXで実行可能なテストです。
 
 ※この手順を実行するとESERAMairのSRAM内容は破壊されますのでご注意ください
 
-**手順 1.** USBケーブルでESERAMairとPCを接続します。
+**手順 1.** ESERAMairのDIPSWを全てOFFにします。
 
-**手順 2.** Teraterm で ESERAMair のコンソールを開き、以下のコマンドを実行します。
+1. OFF: ENABLE
+1. OFF: 8k Bank
+1. OFF: Megarom Mode
+1. OFF: WriteProtect OFF
+
+<img width="400" src="../image/dipsw.jpg">
+
+**手順 2.** USBケーブルでESERAMairとPCを接続します。
+
+**手順 3.** Teraterm で ESERAMair のコンソールを開き、以下のコマンドを実行します。
 
 ```
 sram test fill
@@ -154,19 +172,19 @@ sram test check
 ```
 OK と出るはずです。出なかったらここ以降の手順は止めてご報告をお願いします。
 
-**手順 3.** USBケーブルを取り外します (※ポイント!!必ず外してください)
+**手順 4.** USBケーブルを取り外します (※ポイント!!必ず外してください)
 
-**手順 4.** ESERAMair を MSX に装着し電源を入れます
+**手順 5.** ESERAMair を MSX に装着し電源を入れます
 
-**手順 5.** MSX が起動したら、MSX の電源スイッチで電源を切ります
+**手順 6.** MSX が起動したら、MSX の電源スイッチで電源を切ります
 
-**手順 6.** 上記 手順.5 を 5 回以上繰り返します
+**手順 7.** 上記 手順.5 を 5 回以上繰り返します
 
-**手順 7.** MSX の電源を切り、ESERAMair を MSX から取り外します
+**手順 8.** MSX の電源を切り、ESERAMair を MSX から取り外します
 
-**手順 8.** USBケーブルでESERAMairとPCを接続します。
+**手順 9.** USBケーブルでESERAMairとPCを接続します。
 
-**手順 9.** Teraterm で ESERAMair のコンソールを開き、以下のコマンドを実行します。
+**手順 10.** Teraterm で ESERAMair のコンソールを開き、以下のコマンドを実行します。
 
 ```
 sram test check
