@@ -201,7 +201,7 @@ RAMが64kB以上搭載されているMSXで Disk BASIC もしくは、MSX-DOS(Ne
 
 手順 2. 「Format」ボタンを押してESERAMairをフォーマットしてください。
 
-<img width="600" src="image/web-format.jpg"/>
+<img width="600" src="../image/format.png"/>
 
 手順 2. ESERAMair を MSX のカートリッジスロットに挿入してください。FDD搭載機の場合はFDDからフロッピーを抜いてください。
 
