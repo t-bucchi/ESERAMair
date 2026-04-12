@@ -6,6 +6,8 @@ MSX 界隈では有名な「**似非RAMディスク**」に WiFi 機能を持た
 
 興味を持たれた方は、[Introduction](docs/Introduction.md)もお読みください。
 
+使い方は [Getting Started](docs/GettingStarted.md) に書いてあります。
+
 <img src="docs/image/eseram.jpg">
 
 # ここだけは読んで
