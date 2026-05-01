@@ -40,6 +40,7 @@ MSX 界隈では有名な「**似非RAMディスク**」に WiFi 機能を持た
 
 1. [Introduction](docs/Introduction.md)
 1. [Getting Started](docs/GettingStarted.md)
+1. [Update Firmware](docs/UpdateFW.md)
 1. [USBコンソールコマンド](docs/USBCLI.md)
 1. [REST API](docs/RESTAPI.md)
 
