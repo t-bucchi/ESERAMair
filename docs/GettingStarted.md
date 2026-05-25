@@ -50,14 +50,18 @@ teratermを開き、COMポートを選択します。
 `<SSID>` と `<PASSWORD>` は適宜置き換えてください。
 
 ```
-set_wifi <SSID> <PASSWORD>
+wifi ssid <SSID> <PASSWORD>
 ```
 **例:**
 ```
-set_wifi homeAP HirakeGOMA
+wifi ssid homeAP HirakeGOMA
 ```
 
 SSID、パスワードは日本語はダメです。半角英数記号で入力してください。
+
+> [!NOTE]
+> wifiコマンドの詳細は[USBCLI.mdのwifiコマンド](USBCLI.md#wifi)を参照してください。
+
 
 設定がうまくいけば、緑LED高速に点滅し、その後 チカッ・・チカッ・・のように、たまに点灯する点滅に変わるはずです。
 
