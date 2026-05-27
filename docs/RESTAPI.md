@@ -197,6 +197,23 @@ $ curl http://192.168.1.100:8080/hello
   - 500 Internal Server Error: FAT 操作で削除できなかった
 
 
+## POST /fat/rename?src=&lt;src&gt;&dst=&lt;dst&gt;
+- 指定ファイルまたはディレクトリの名前を変更します。
+- `src` と `dst` にはサブディレクトリを含めることができます。
+- 例:
+  - `POST /fat/rename?src=OLD.BAS&dst=NEW.BAS`
+  - `POST /fat/rename?src=GAMES/RPG&dst=GAMES/RPG2`
+- Response:
+  - 200 OK
+  - Content-Type: application/json
+  - Body: `{ "result": "renamed" }`
+- Error:
+  - 400 Bad Request: パスが不正
+  - 404 Not Found: 元のパスまたは移動先の親ディレクトリが存在しない
+  - 409 Conflict: 同名のファイルまたはディレクトリが既に存在する
+  - 500 Internal Server Error: FAT 操作で rename できなかった
+
+
 ## POST /fat/format
 - FATファイルシステムをフォーマットします。
 - Request:
