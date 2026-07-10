@@ -97,12 +97,16 @@ Pico の USB CDC/UART から利用するコンソール向けのコマンド一�
   - `wifi ssid <ssid> [password]` - `SSID1` を保存
   - `wifi ssid<n> <ssid> [password]` - `SSID<n>` を保存（`n` は 1〜5）
   - `wifi ssid<n> del` - `SSID<n>` を削除（`n` は 1〜5）
+  - `wifi temp-ssid <ssid> <password>` - flash に保存しない揮発性の SSID/password を設定し、即時接続を開始
+  - `wifi temp-clear` - 揮発性の SSID/password を破棄し、保存済み SSID での接続へ戻す
 - 備考:
   - ステルスSSIDの場合はSSIDを1つだけ指定してください。複数SSIDが登録されている場合、周辺のAP検索して見つかったSSIDにのみ接続するためです。
   - `password` 省略時はパスワードなし AP として保存します。
   - SSID 設定時、未登録の番号を飛ばして保存することはできません。
   - SSID 削除後は若い番号に詰めます。
   - 登録済み SSID が 1 つだけの場合は削除できません。
+  - `wifi temp-ssid` は設定は RAM 上にのみ保持され、再起動・電源断で消えます。
+  - 揮発性 SSID/password が設定されている間は保存済み SSID より優先して使用し、接続失敗時も保存済み SSID へ自動フォールバックしません。
 
 ---
 
