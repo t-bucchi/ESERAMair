@@ -32,9 +32,42 @@ MSX 界隈では有名な「**似非RAMディスク**」に WiFi 機能を持た
 
 ## 動作確認済み機種
 
-- Panasonic FS-A1
-- Panasonic FS-A1F
-- Panasonic FS-A1WSX
+動作が確認できた機種の一覧です。
+※ただし、リストにあっても動作保証するものではありません。
+
+### MSX1
+- CANON V-8, V-10, V-20
+- CASIO PV-7, MX-10 (+KB-10), MX-15 (+KB-15), MX-101 (+KB-10)
+- National CF-1200
+- Pioneer PX-V60
+- SANYO MPC-3(WAVY3), PHC-30N, PHC-33
+- Sony HB-101
+- Toshiba HX-21
+- Victor HC-7
+- YAMAHA CX5F, YIS503, YIS503II
+
+### MSX2
+- CANON V-25
+- KAWAI KMC-5000
+- Mitsubishi ML-G10
+- Panasonic FS-A1, FS-A1F, FS-A1FM, FS-A1mkII
+- Toshiba HX-34
+- YAMAHA CX7M/128, YIS604/128, YIS805/256
+
+### MSX2+
+- Panasonic FS-A1WX, FS-A1WSX
+- SANYO PHC-35J(WAVY35), PHC-70FD
+- Sony HB-F1XDJ, HB-XV
+
+### MSX TurboR
+- Panasonic FS-A1ST, FS-A1GT
+- Sony HB-F1XV(+TurboRキット), HB-F1XDJ(+TurboRキット)
+
+### MSX互換機
+- 1chipMSX
+- MeSX
+- OneChipBook
+- SX-2
 
 # ドキュメント
 
