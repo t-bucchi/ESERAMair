@@ -48,6 +48,8 @@ teratermを開き、COMポートを選択します。
 
 プロンプトに以下のように入力してください。
 `<SSID>` と `<PASSWORD>` は適宜置き換えてください。
+SSID やパスワードに空白や `"`, `'` を含める場合は、`"Home AP"`, `'Home AP'` のようにクォートで囲んでください。
+`"`, `'` を使いたい場合は `\` でエスケープが可能です。
 
 ```
 wifi ssid <SSID> <PASSWORD>
@@ -55,9 +57,10 @@ wifi ssid <SSID> <PASSWORD>
 **例:**
 ```
 wifi ssid homeAP HirakeGOMA
+wifi ssid "Home AP" 'aaa" 33dr\'dss'
 ```
 
-SSID、パスワードは日本語はダメです。半角英数記号で入力してください。
+SSID、パスワードは日本語は対応していません。半角英数記号で入力してください。
 
 > [!NOTE]
 > wifiコマンドの詳細は[USBCLI.mdのwifiコマンド](USBCLI.md#wifi)を参照してください。
