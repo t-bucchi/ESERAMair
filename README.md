@@ -82,6 +82,7 @@ MSX 界隈では有名な「**似非RAMディスク**」に WiFi 機能を持た
 1. [Update Firmware](docs/UpdateFW.md)
 1. [USBコンソールコマンド](docs/USBCLI.md)
 1. [REST API](docs/RESTAPI.md)
+1. [TCP/IP UNAPI](docs/UNAPI.md)
 
 # ライセンス
 
