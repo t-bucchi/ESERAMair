@@ -23,6 +23,11 @@ $ curl http://192.168.1.100:8080/hello
 { "message": "Hello, world!!" }
 ```
 
+操作系APIの成功レスポンスがJSONの場合、`result` は常に `"ok"` になります。
+成功判定はHTTPステータスコード（2xx）を正とします。
+ファイル一覧やファイル情報など、取得対象のデータを返すGET APIには `result` は付きません。
+エラー時のJSONレスポンスには `result` を付けず、`error` を返します。
+
 ## GET /hello
 - テスト用のエンドポイントです。固定メッセージを返します。
 - Response:
@@ -50,7 +55,7 @@ $ curl http://192.168.1.100:8080/hello
 ## POST /ram
 - SRAMにデータを書き込みます。
 - Parameters:
-  - start: 書き込み開始アドレス
+  - start (optional): 書き込み開始アドレス（省略時0）
 - Request:
   - Body: data to write
   - Headers:
@@ -58,7 +63,16 @@ $ curl http://192.168.1.100:8080/hello
 - Response:
   - 200 OK
   - Content-Type: application/json
-  - Body: `{}`
+  - Body:
+    ```json
+    {
+      "result": "ok",
+      "start": 4096,
+      "size": 256
+    }
+    ```
+  - `start`: 実際の書き込み開始アドレス
+  - `size`: 実際に書き込んだバイト数（`Content-Length` と一致）
 - Error:
   - 400 Bad Request: `start` が範囲外など
   - 500 Internal Server Error: バス制御取得失敗など
@@ -69,13 +83,21 @@ $ curl http://192.168.1.100:8080/hello
 - SRAMを特定のデータで埋め尽くします。
 - Parameters:
   - start: 書き込み開始アドレス(省略したら0)
-  - size: 書き込み開始アドレス(省略したら末尾まで)
+  - size: 書き込みサイズ(省略したら末尾まで)
   - data: 書き込む値(省略したら0)
-- Request:
 - Response:
   - 200 OK
   - Content-Type: application/json
-  - Body: `{}`
+  - Body:
+    ```json
+    {
+      "result": "ok",
+      "start": 4096,
+      "size": 256
+    }
+    ```
+  - `start`: 実際の書き込み開始アドレス
+  - `size`: 実際に埋めたバイト数
 - Error:
   - 400 Bad Request: start + size がSRAM範囲外
   - 500 Internal Server Error: バス制御取得失敗
@@ -144,12 +166,39 @@ $ curl http://192.168.1.100:8080/hello
 
 ## GET /fat/files/&lt;filename&gt;
 - 指定ファイルをダウンロードします。`<filename>` にはサブディレクトリを含めることができます（例: `DIR1/FILE.BIN`）。
+- Query Parameters:
+  - `stat` (optional): `true` を指定すると、ファイル内容ではなくファイル情報をJSONで返します。省略時はファイル内容を返します。
 - Response:
-  - 200 OK
-  - Content-Type: application/octet-stream
+  - `stat` 省略時:
+    - 200 OK
+    - Content-Type: application/octet-stream
+    - Body: ファイル内容
+  - `stat=true` 指定時:
+    - 200 OK
+    - Content-Type: application/json
+    - Body:
+      ```json
+      {
+        "name":"FILE1.BIN",
+        "size":123,
+        "date":"2001/01/01 01:01:01",
+        "type":"file"
+      }
+      ```
+    - `GET /fat/files` の一覧に含まれる1要素と同じ形式で返します。
+- 例:
+  - GET /fat/files/DIR/FILE.BIN
+    - ファイルのダウンロード
+  - GET /fat/files/DIR/FILE.BIN?stat=true
+    - ファイル情報の取得
+- 備考:
+  - `stat=true` の場合は、ファイルまたはディレクトリの情報を返します。
+  - ディレクトリの場合は `size` が `0`、`type` が `"dir"` になります。
+  - `stat` を指定せずにディレクトリを指定した場合は 400 Bad Request です。
+  - 日付フォーマットは `YYYY/MM/DD HH:MM:SS`（日付情報が無い場合は空文字列）です。
 - Error:
-  - 404 Not Found: ファイル未発見
-  - 400 Bad Request: パスが不正、またはディレクトリを指定した場合
+  - 404 Not Found: 指定パス未発見
+  - 400 Bad Request: パスが不正、または `stat` を指定せずにディレクトリを指定した場合
 
 
 
@@ -157,14 +206,31 @@ $ curl http://192.168.1.100:8080/hello
 - 指定ファイルにアップロードします。`<filename>` にはサブディレクトリを含めることができます。親ディレクトリは事前に存在している必要があります。
 - Request:
   - Query (optional):
-    - `mtime`: タイムスタンプ（ローカル時刻）。`YYYY/MM/DD HH:MM:SS` または `YYYY-MM-DDTHH:MM:SS`  - Body: data to write
+    - `mtime`: タイムスタンプ（ローカル時刻）。`YYYY/MM/DD HH:MM:SS` または `YYYY-MM-DDTHH:MM:SS`
+  - Body: data to write
 - Response:
   - 200 OK
   - Content-Type: application/json
-  - Body: `{}`
+  - Body:
+    ```json
+    {
+      "result": "ok",
+      "name": "FILE.BIN",
+      "size": 123,
+      "date": "2001/01/01 01:01:01",
+      "type": "file"
+    }
+    ```
+  - `result`: 成功時は常に `"ok"`
+  - `name`: 保存後のファイル名（パスを含まない）。FATの仕様により大文字・小文字などが正規化される場合があります。
+  - `size`: 保存後の実ファイルサイズ（バイト）
+  - `date`: 保存後のFAT上の日時
+  - `type`: 常に `"file"`
+  - `date` は `mtime` 指定時もFATに保存された実際の日時を返します。
 - Error:
   - 400 Bad Request: パスが不正、またはディレクトリを指定した場合、`mtime` が不正
   - 404 Not Found: 親ディレクトリが存在しない
+  - 500 Internal Server Error: ファイルの書き込み、タイムスタンプ更新、またはファイル情報取得に失敗した場合
 
 
 
@@ -175,7 +241,7 @@ $ curl http://192.168.1.100:8080/hello
 - Response:
   - 200 OK
   - Content-Type: application/json
-  - Body: `{ "result": "created" }`
+  - Body: `{ "result": "ok" }`
 - Error:
   - 400 Bad Request: パスが不正
   - 404 Not Found: 親ディレクトリが存在しない
@@ -190,7 +256,7 @@ $ curl http://192.168.1.100:8080/hello
 - Response:
   - 200 OK
   - Content-Type: application/json
-  - Body: `{ "result": "deleted" }`
+  - Body: `{ "result": "ok" }`
 - Error:
   - 400 Bad Request: パスが不正
   - 404 Not Found: 指定パスが存在しない
@@ -206,7 +272,7 @@ $ curl http://192.168.1.100:8080/hello
 - Response:
   - 200 OK
   - Content-Type: application/json
-  - Body: `{ "result": "renamed" }`
+  - Body: `{ "result": "ok" }`
 - Error:
   - 400 Bad Request: パスが不正
   - 404 Not Found: 元のパスまたは移動先の親ディレクトリが存在しない
@@ -219,5 +285,5 @@ $ curl http://192.168.1.100:8080/hello
 - Request:
   - Body: なし
 - Response:
-  - 200 OK: フォーマット成功（Body: `{"result":"formatted"}`）
+  - 200 OK: フォーマット成功（Body: `{"result":"ok"}`）
   - 500 Internal Server Error: フォーマット失敗
