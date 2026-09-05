@@ -39,7 +39,7 @@ teratermを開き、COMポートを選択します。
 
 <img width="500" src="image/teraterm-connect.png">
 
-開けたら数回Enterキーを謳歌してみてください。
+開けたら数回Enterキーを押下してみてください。
 プロンプトが表示されれば接続OKです。
 
 <img width="500" src="image/teraterm-prompt.png">
