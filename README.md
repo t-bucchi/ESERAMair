@@ -84,6 +84,10 @@ MSX 界隈では有名な「**似非RAMディスク**」に WiFi 機能を持た
 1. [REST API](docs/RESTAPI.md)
 1. [TCP/IP UNAPI](docs/UNAPI.md)
 
+実験版のFW
+
+1. [ESERAMair-SMB](experimental/ESERAMair-SMB/README.md) ... SMBサーバ上のディスクイメージをMSXにマウントします
+
 # ライセンス
 
 ESERAMair のライセンスは [LICENSE.md](LICENSE.md) を参照ください。
